@@ -37,8 +37,8 @@ STRING_SESSION: str = _require("STRING_SESSION")
 OWNER_ID: int = _require_int("OWNER_ID")
 
 # ---- Group configuration ---------------------------------------------------
-RECORD_GROUP: int = _require_int("-1002389305159")
-LOGGER_GROUP: int = _require_int("-1003799579979")
+RECORD_GROUP: int = _require_int("LOGGER_GROUP")
+LOGGER_GROUP: int = _require_int("LOGGER_GROUP")
 
 # ---- Database ---------------------------------------------------------------
 MONGO_URI: str = _require("mongodb+srv://Sweettoxic:Sweettoxic@sweettoxic.mg57v4c.mongodb.net/?retryWrites=true&w=majority")
