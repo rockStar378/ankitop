@@ -1,21 +1,17 @@
-FROM python:3.11-slim
+FROM nikolaik/python-nodejs:python3.11-nodejs19
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        ffmpeg \
-        pulseaudio \
-        pulseaudio-utils \
-        xvfb \
-        x11-apps \
-        git \
-    && rm -rf /var/lib/apt/lists/*
+RUN rm -f /etc/apt/sources.list.d/yarn.list && \
+    sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /etc/apt/sources.list && \
+    sed -i '/security.debian.org/d' /etc/apt/sources.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends ffmpeg aria2 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY . /app/
+WORKDIR /app/
 
-COPY . .
+RUN python -m pip install --no-cache-dir --upgrade pip
+RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
 
-ENV DISPLAY=:1
-ENV PULSE_SERVER=unix:/tmp/pulse-socket
-
-CMD ["bash", "-c", "pulseaudio -D --exit-idle-time=-1 --disallow-exit --system=false && Xvfb :1 -screen 0 1280x720x24 & sleep 2 && python3 start.py"]
+CMD bash start
