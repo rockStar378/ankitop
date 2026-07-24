@@ -41,8 +41,8 @@ RECORD_GROUP: int = _require_int("LOGGER_GROUP")
 LOGGER_GROUP: int = _require_int("LOGGER_GROUP")
 
 # ---- Database ---------------------------------------------------------------
-MONGO_URI: str = _require("mongodb+srv://Sweettoxic:Sweettoxic@sweettoxic.mg57v4c.mongodb.net/?retryWrites=true&w=majority")
-DB_NAME: str = _require("telegrambot")
+MONGO_URI: str = _require("MONGO_URI")
+DB_NAME: str = _require("DB_NAME")
 
 # ---- Audio bridge -------------------------------------------------------
 PULSE_SINK_NAME: str = os.environ.get("PULSE_SINK_NAME", "vcrelay").strip() or "vcrelay"
