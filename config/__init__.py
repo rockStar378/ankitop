@@ -37,7 +37,7 @@ STRING_SESSION: str = _require("STRING_SESSION")
 OWNER_ID: int = _require_int("OWNER_ID")
 
 # ---- Group configuration ---------------------------------------------------
-RECORD_GROUP: int = _require_int("LOGGER_GROUP")
+RECORD_GROUP: int = _require_int("RECORD_GROUP")
 LOGGER_GROUP: int = _require_int("LOGGER_GROUP")
 
 # ---- Database ---------------------------------------------------------------
